@@ -1,0 +1,4 @@
+﻿ID;Name;Department;Type;Salary;Info
+1;John;Development;Developer;200.0;Сотрудник [id: 1, имя: John, отдел: Development]
+2;Alice;Development;Manager;200.0;Сотрудник [id: 2, имя: Alice, отдел: Development]
+3;Bob;Sales;Salesperson;80.0;Сотрудник [id: 3, имя: Bob, отдел: Sales]

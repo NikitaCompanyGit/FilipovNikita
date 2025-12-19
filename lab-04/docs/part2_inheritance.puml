@@ -1,0 +1,49 @@
+@startuml
+title Иерархия: Abstract наследует Base
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package "base" {
+    class Employee {
+        - __id : int
+        - __name : string
+        - __department : string
+        - __base_salary : float
+        + __init__(...)
+        + __str__()
+    }
+
+    abstract class AbstractEmployee {
+        + {abstract} calculate_salary()
+        + {abstract} get_info()
+    }
+}
+
+package "specialists" {
+    class OrdinaryEmployee
+    class Manager
+    class Developer
+    class Salesperson
+}
+
+' Ключевое изменение стрелок:
+' AbstractEmployee наследует (расширяет) Employee
+Employee <|-- AbstractEmployee
+
+' Конкретные классы реализуют AbstractEmployee
+AbstractEmployee <|-- OrdinaryEmployee
+AbstractEmployee <|-- Manager
+AbstractEmployee <|-- Developer
+AbstractEmployee <|-- Salesperson
+
+note right of Employee
+  Хранит данные
+  и проверяет типы
+end note
+
+note right of AbstractEmployee
+  Добавляет требование
+  методов расчета
+end note
+@enduml

@@ -1,0 +1,56 @@
+{
+    "company_name": "MegaSoft",
+    "departments": [
+        {
+            "name": "Development",
+            "employees": [
+                {
+                    "type": "developer",
+                    "id": 1,
+                    "name": "John",
+                    "department": "Development",
+                    "base_salary": 100.0,
+                    "seniority": "senior",
+                    "tech_stack": [
+                        "Python"
+                    ]
+                },
+                {
+                    "type": "manager",
+                    "id": 2,
+                    "name": "Alice",
+                    "department": "Development",
+                    "base_salary": 150.0,
+                    "bonus": 50.0
+                }
+            ]
+        },
+        {
+            "name": "Sales",
+            "employees": [
+                {
+                    "type": "salesperson",
+                    "id": 3,
+                    "name": "Bob",
+                    "department": "Sales",
+                    "base_salary": 80.0,
+                    "commission": 0.1,
+                    "sales_volume": 0.0
+                }
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "id": 101,
+            "name": "SuperApp",
+            "description": "The best app",
+            "deadline": "2025-12-31",
+            "status": "active",
+            "team_ids": [
+                1,
+                2
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "department_name": "Test Dept",
+    "employees": [
+        {
+            "type": "employee",
+            "id": 1,
+            "name": "TestUser",
+            "department": "QA",
+            "base_salary": 50000.0
+        },
+        {
+            "type": "developer",
+            "id": 2,
+            "name": "PyDev",
+            "department": "IT",
+            "base_salary": 100000.0,
+            "seniority": "senior",
+            "tech_stack": [
+                "Python"
+            ]
+        }
+    ]
+}
