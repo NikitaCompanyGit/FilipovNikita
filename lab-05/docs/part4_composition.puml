@@ -1,0 +1,64 @@
+@startuml
+title Система учета сотрудников (Финал: Part 4)
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package "base" {
+    class exceptions << (M,orchid) >> {
+         + AppError
+         + DependencyError
+         + ...
+    }
+    abstract class AbstractEmployee
+}
+
+package "organization" {
+    class Company {
+        - name : str
+        - __departments : list[Department]
+        - __projects : list[Project]
+        + add_department()
+        + add_project()
+        + remove_employee_globally()
+        + save_to_json()
+        + {static} load_from_json()
+        + export_csv()
+    }
+
+    class Department {
+        - name
+        - __employees : list[AbstractEmployee]
+        + add_employee()
+    }
+
+    class Project {
+        - id
+        - status
+        - __team : list[AbstractEmployee]
+        + add_team_member()
+        + to_dict() : dict (returns IDs)
+    }
+}
+
+package "specialists" {
+    class Developer
+    class Manager
+    class Salesperson
+}
+
+' Отношения
+Company *-- Department : aggregation\n(contains)
+Company *-- Project : aggregation\n(contains)
+
+' Department владеет сотрудниками (они живут там)
+Department o-- AbstractEmployee : aggregation
+
+' Project ссылается на сотрудников (Composite logic for Team)
+Project o-- AbstractEmployee : uses (team)
+
+' Наследование
+AbstractEmployee <|-- Developer
+AbstractEmployee <|-- Manager
+AbstractEmployee <|-- Salesperson
+
+@enduml

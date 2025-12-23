@@ -1,0 +1,48 @@
+@startuml
+title Часть 1 Инкапсуляция и Валидация
+
+' Настройки стиля для большей читаемости
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+package base {
+    class Employee {
+        - __id  int
+        - __name  string
+        - __department  string
+        - __base_salary  float
+        
+        + __init__(id int, name str, dept str, salary float)
+        + id  int property
+        + name  string property
+        + department  string property
+        + base_salary  float property
+        + __str__()  string
+    }
+    
+    note right of Employeeid
+      Сеттер проверяет
+      value  0
+    end note
+    
+    note right of Employeebase_salary
+      Сеттер проверяет
+      value = 0
+    end note
+}
+
+package tests {
+    class TestPart1 {
+        + {static} run()
+        + {static} test_valid_creation()
+        + {static} test_validation_errors()
+    }
+}
+
+TestPart1 .. Employee  instantiates & tests
+
+@enduml

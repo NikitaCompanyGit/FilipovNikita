@@ -1,0 +1,121 @@
+@startuml
+title Система учета сотрудников (Часть 3: Полная архитектура)
+
+' Настройки стиля
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam handwritten false
+skinparam packageStyle rectangle
+
+' --- ПАКЕТ BASE ---
+package "base" {
+    class Employee {
+        - __id : int
+        - __name : str
+        - __department : str
+        - __base_salary : float
+        + __init__(id, name, dept, salary)
+        + id : int <<property>>
+        + name : str <<property>>
+        + department : str <<property>>
+        + base_salary : float <<property>>
+        + __str__()
+    }
+
+    abstract class AbstractEmployee {
+        + {abstract} calculate_salary() : float
+        + {abstract} get_info() : str
+        + {abstract} to_dict() : dict
+        __ Магические методы __
+        + __eq__(other) : bool
+        + __lt__(other) : bool
+        + __add__(other) : float
+        + __radd__(other) : float
+    }
+}
+
+' --- ПАКЕТ SPECIALISTS ---
+package "specialists" {
+    class OrdinaryEmployee {
+        + calculate_salary()
+        + get_info()
+        + to_dict()
+    }
+
+    class Manager {
+        - __bonus : float
+        + bonus : float <<property>>
+        + calculate_salary()
+        + to_dict()
+    }
+
+    class Developer {
+        - __tech_stack : list[str]
+        - __seniority_level : str
+        + seniority_level : str <<property>>
+        + add_skill(skill)
+        + calculate_salary()
+        + to_dict()
+        + __iter__() : iterator
+    }
+
+    class Salesperson {
+        - __commission_rate : float
+        - __sales_volume : float
+        + update_sales(amount)
+        + calculate_salary()
+        + to_dict()
+    }
+}
+
+' --- ПАКЕТ ORGANIZATION ---
+package "organization" {
+    class Department {
+        - name : str
+        - __employees : list[AbstractEmployee]
+        + __init__(name)
+        + add_employee(emp)
+        + remove_employee(id)
+        + calculate_total_salary() : float
+        + get_employee_count() : dict
+        __ Сериализация __
+        + save_to_file(filename)
+        + {static} load_from_file(filename) : Department
+        __ Магические методы __
+        + __len__() : int
+        + __iter__() : iterator
+        + __getitem__(index) : AbstractEmployee
+        + __contains__(emp) : bool
+    }
+}
+
+' --- ПАКЕТ UTILS ---
+package "utils" {
+    class comparators << (M,orchid) module >> {
+        + sort_by_name(emp)
+        + sort_by_salary(emp)
+    }
+}
+
+class EmployeeFactory {
+    + {static} create_employee(type, **kwargs) : AbstractEmployee
+}
+
+' --- СВЯЗИ ---
+
+' 1. Наследование
+Employee <|-- AbstractEmployee
+AbstractEmployee <|-- OrdinaryEmployee
+AbstractEmployee <|-- Manager
+AbstractEmployee <|-- Developer
+AbstractEmployee <|-- Salesperson
+
+' 2. Композиция/Агрегация
+Department o-- "0..*" AbstractEmployee : contains >
+
+' 3. Зависимости
+EmployeeFactory ..> AbstractEmployee : creates >
+Department ..> EmployeeFactory : uses (in load_from_file)
+Department ..> comparators : uses (client code sort)
+
+@enduml
