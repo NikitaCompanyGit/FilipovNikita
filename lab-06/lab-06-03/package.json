@@ -1,0 +1,7 @@
+{
+  "name": "lab6-js",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Functional Programming in JS",
+  "main": "main.js"
+}
