@@ -42,3 +42,39 @@
 ### 📁 Лабораторная работа №9 (lab-09)
 
 * **Отчет:** [Отчёт.md](lab-09/Отчёт.md)
+
+
+### 📁 Лабораторная работа №10 (lab-10)
+
+* **Отчет:** [report.md](lab-10/Solution/report.md)
+
+### 📁 Лабораторная работа №11 (lab-11)
+
+* **Отчет:** [report.md](lab-11/Solution/report.md)
+
+### 📁 Лабораторная работа №12 (lab-12)
+
+* **Отчет:** [report.md](lab-12/Solution/report.md)
+
+### 📁 Лабораторная работа №13 (lab-13)
+
+* **Отчет:** [report.md](lab-13/Solution/report.md)
+
+### 📁 Лабораторная работа №14 (lab-14)
+
+* **Отчет:** [report.md](lab-14/Solution/report.md)
+
+### 📁 Лабораторная работа №15 (lab-15)
+
+* **Отчет:** [report.md](lab-15/Solution/report.md)
+
+### 📁 Лабораторная работа №16 (lab-16)
+
+* **Отчет:** [report.md](lab-16/Solution/report.md)
+
+### 📁 Лабораторная работа №17 (lab-17)
+
+* **Отчет:** [report.md](lab-17/Solution/report.md)
+
+
+

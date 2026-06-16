@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новости PWA (Филиппов)</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#d97706">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafaf9;
+      color: #1c1917;
+    }
+    header {
+      background: #1c1917;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #d97706;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    #status-indicator {
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #059669;
+    }
+    #status-indicator.offline {
+      background: #dc2626;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .news-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      border: 1px solid #e7e5e4;
+    }
+    .news-card h3 {
+      margin-top: 0;
+      color: #1c1917;
+    }
+    .news-card p {
+      color: #57534e;
+      line-height: 1.6;
+    }
+    .news-card .date {
+      font-size: 0.75rem;
+      color: #a8a29e;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #78716c;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Лента Событий PWA</h1>
+    <div id="status-indicator">Online</div>
+  </header>
+  <main id="news-container">
+    <div class="loader">Получение новостей...</div>
+  </main>
+  <footer>
+    <p>&copy; 2026 Лента Событий PWA (Филиппов Н. С.)</p>
+  </footer>
+  <script src="/src/js/db.js"></script>
+  <script src="/src/js/app.js"></script>
+  <script>
+    if('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+</body>
+</html>

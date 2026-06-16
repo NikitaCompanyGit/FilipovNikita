@@ -1,0 +1,6 @@
+# Конфигурация для Bandit
+# Установка строгости от MEDIUM
+severity: MEDIUM
+# Исключаем конкретные тесты (если потребуется, например assert для pytest B101)
+skips: ['B101']
+exclude_dirs: ['venv']

@@ -1,0 +1,3 @@
+Order Number,Customer,Status,Order Date,Payment Method,Total
+ORD-1001,Никита Филиппов,Paid,2024-01-15,card,78000
+ORD-1002,Петр Иванов,Paid,2024-01-16,cash,2500
